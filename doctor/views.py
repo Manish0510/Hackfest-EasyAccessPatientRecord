@@ -3,6 +3,7 @@ from .models import DoctorProfile
 from django.http import HttpResponse
 from .models import Department
 from patient.models import PatientProfile
+from. models import *
 
 # Create your views here.
 def login(request):
@@ -62,3 +63,107 @@ def doc_register(request):
         departments = Department.objects.all()
         print(departments)
         return render(request, 'doc_register.html', {'departments' : departments})
+
+def add_prescription(request):
+
+    if request.method == 'GET':
+
+        # Adding prescription
+        patient = PatientProfile.objects.filter(patient_id = 1)[0]
+        doctor = DoctorProfile.objects.filter(doctor_id = 1)[0]
+
+        new_prescription = DoctorPrescription(
+            date = '1999-05-11',
+            nextVisit = '1999-05-11',
+            reason = "blah blah",
+            doctors_notes = "mai pagal",
+            patient_id = patient,
+            doctor_id = doctor)
+        new_prescription.save()
+
+        #-----> Issues: multiple medication order and all below
+
+        # +++++++++Adding Medication Order
+        medicines = Medicines.objects.all()[:2] #filter(code = 1)[0:2]
+
+        for medicine in medicines:
+
+            medication_order = Medication_order(
+            medication_unit = 10,
+            prescription_id  = new_prescription,
+            medicine_code = medicine
+            )
+            medication_order.save()
+
+            # ++++++++++ Adding Authorisation_details
+            authorization_details = Authorisation_details(
+                number_of_repeats_allowed = 3,
+                validity_period ='1999-05-12',
+                medication_id = medication_order
+            )
+            authorization_details.save()
+
+            # ++++++++++ Adding Medication_timing
+            medication_timing = Medication_timing(
+                morning = False,
+                afternoon = True,
+                evening = True,
+                night = True,
+                medication_id = medication_order
+            )
+            medication_timing.save()
+
+            # +++++++++++ Adding Repetations
+            repetation = Repetation(
+                start_date = '1999-05-12',
+                end_date = '1999-05-12',
+                repetation_interval = '12',
+                medication_id = medication_order
+            )
+            repetation.save()
+
+            # +++++++++++ Adding Medication_safety
+            medication_safety = Medication_safety(
+                max_dose_per_period = 5,
+                override_reason = 'Nothing',
+                medication_id = medication_order
+            )
+            medication_safety.save()
+
+            print((f'{medicine.name} added Successfully!'))
+
+        print(('Data Posted Successfully!'))
+        return HttpResponse('Data Posted Successfully!') 
+
+    else:
+        return HttpResponse('This is a get Request!')
+
+
+def view_prescription(request):
+    prescription = DoctorPrescription.objects.filter(prescription_id = 4)[0]
+    print(prescription)
+    print(prescription.prescription_id)
+    print('------------')
+    medication_orders = Medication_order.objects.filter(prescription_id=prescription.prescription_id)
+    print(prescription)
+
+    prescription_data = {}
+
+    for med_order in medication_orders:
+        print(med_order)
+        authorization = Authorisation_details.objects.filter(medication_id=med_order.medication_id)
+        med_timing = Medication_timing.objects.filter(medication_id=med_order.medication_id)
+        repetation = Repetation.objects.filter(medication_id=med_order.medication_id)
+        med_safety = Medication_safety.objects.filter(medication_id=med_order.medication_id)
+        print(authorization)
+        print(med_timing)
+        print(repetation)
+        print(med_safety)
+        print('-----------------------------------')
+        # sendData = {'auth':authorization, 'med_timing':med_timing, 'repetation':repetation, 'med_safety':med_safety}
+        # return render(request, "doc_prescription.html", sendData)
+
+    # docPresc = DoctorPrescription.objects.all()
+    # docMedication = Medication_order.objects.all()
+    # context = {'presc' : prescription}
+    return HttpResponse('Done!')
