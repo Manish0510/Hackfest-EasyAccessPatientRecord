@@ -1,4 +1,3 @@
-import http
 from http.client import HTTPResponse
 from multiprocessing import context
 from .forms import RegForm, MedicalInfoForm
@@ -14,11 +13,16 @@ def pat_register(request):
     form = RegForm()
     if request.method == 'POST':
         form = RegForm(request.POST)
-        if form.is_valid:
+        if form.is_valid():
             form.save()
-            return redirect('pat_homepage')
+            # return redirect('pat_homepage')
+            return redirect('pat_medical_form_page')
+
     context = {'form': form}
     return render(request, 'pat_register.html', context)
+
+def pat_medical_form_page(request):
+    return render(request=request,template_name=pat_medicalForm)
 
 
 def pat_medicalForm(request):
