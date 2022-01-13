@@ -5,5 +5,29 @@
 {% endblock %}
 
 {% block body %}
-<h1>You are currently in patient's homepage</h1>
+
+    <!-- search part -->
+    <div>
+        <input type="text" name="pat_search" placeholder="Search for a Patient...">
+    </div>
+
+    <!-- body part  -->
+    <div>
+        <!-- body sidebar  -->
+        <div>
+
+            <!-- imp: These href in a are temporary for now, we have to change it to redirect it to desired page. -->
+            <a href="/"> <button> View all Medical prescriptions </button> </a>
+            <a href="/"> <button> View Medical Information </button> </a>
+            <a href="/"> <button> View List of all Doctors </button> </a>
+        </div>
+
+        <!-- body left  -->
+        <div>
+
+        </div>
+        
+    </div>
+
+
 {% endblock %}

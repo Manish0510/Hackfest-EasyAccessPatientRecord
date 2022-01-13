@@ -18,7 +18,7 @@ def login(request):
 
         if doctor and (password== doctor.password):
             request.session['doctor_id'] = doctor.doctor_id
-            return redirect('homepage')
+            return render(request, 'doc_home.html')
 
         else:
             patient = PatientProfile.get_patient_by_email(email)
