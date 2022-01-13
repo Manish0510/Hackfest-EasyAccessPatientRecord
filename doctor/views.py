@@ -62,3 +62,11 @@ def doc_register(request):
         departments = Department.objects.all()
         print(departments)
         return render(request, 'doc_register.html', {'departments' : departments})
+
+
+
+def all_doctors(request):
+    # return DoctorProfile.objects.all()
+    doctors = DoctorProfile.objects.all()
+    return render(request,'view_doctors.html',{doctors:doctors})
+
