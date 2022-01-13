@@ -779,6 +779,10 @@ a:focus {
   transition: all .35s ease;
 }
 
+.img-rnd{
+  border-radius:5%;
+}
+
 .doctor-inner-box .doctor-profile .doctor-img:hover {
   -webkit-transform: scale(1.1);
   transform: scale(1.1);
