@@ -506,6 +506,11 @@ a:focus {
   background: #e12454;
 }
 
+#remdiv{
+  display:none;
+}
+
+
 @media (max-width: 480px) {
   .banner .block h1 {
     font-size: 38px;
@@ -1496,4 +1501,3 @@ a:focus {
   opacity: 1;
 }
 
-/*# sourceMappingURL=maps/style.css.map */
