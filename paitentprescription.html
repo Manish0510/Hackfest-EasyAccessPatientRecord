@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="zxx">
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="description" content="Orbitor,business,company,agency,modern,bootstrap4,tech,software">
+	<meta name="author" content="themefisher.com">
+
+	<title>Novena- Health & Care Medical template</title>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
+
+	<!-- bootstrap.min css -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+	<!-- Main Stylesheet -->
+	<link rel="stylesheet" href="css/style.css">
+
+	</head>
+
+	<body id="top">
+		
+
+
+		<section class="page-title bg-2">
+			<div class="overlay"></div>
+			<div class="container">
+				<div class="row">
+				<div class="col-md-12">
+					<div class="block text-center">
+					<h1 class="text-capitalize mb-5 text-lg">Patient Prescription</h1>
+					<!--<span class="text-white">Details</span>-->
+
+					<!-- <ul class="list-inline breadcumb-nav">
+						<li class="list-inline-item"><a href="index.html" class="text-white">Home</a></li>
+						<li class="list-inline-item"><span class="text-white">/</span></li>
+						<li class="list-inline-item"><a href="#" class="text-white-50">Department Details</a></li>
+					</ul> -->
+					</div>
+				</div>
+				</div>
+			</div>
+		</section>
+
+
+		<section class="section department-single">
+			<div class="container">
+
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="department-content sidebars-widget schedules-widget mt-5">
+							<h5 class="text-md">Doctor Prescription</h5>
+							<div class="divider my-4"></div>
+							
+					
+								<form id="patientform" action="/" method="">
+
+									<div id="remform" class="row">
+										<div class="col-lg-12">
+											<div class="form-group">
+											  <label for="max_dose_per_period"> Max Dose Per Period: </label>
+											  <input id="max_dose_per_period" type="number" class="form-control" name="max_dose_per_period">
+											</div>
+										</div>
+										<div class="col-lg-12">
+										<div class="form-group">
+										<label for="nextvisit"> Next Visit </label>
+										<input id="nextvisit" type="date" class="form-control" name="nextVisit">
+									</div>
+									</div>
+										<div class="col-lg-12">
+											<div class="form-group">
+											<label for="reason"> Reason: </label>
+											<input id="reason" type="text" class="form-control" name="reason">
+									</div>
+										</div>
+										<div class="col-lg-12">
+											<div class="form-group">
+										<label for="doc_notes">Doctor Notes: </label>
+										<input id="doc_notes" type="text" class="form-control" name="doc_notes">
+									</div>
+										</div>
+										<div class="col-lg-12">
+											<div class="form-group">
+										<label for="pat_id"> Patien Id: </label>
+										<input id="pat_id" type="number" class="form-control"  name="pat_id">
+									</div>
+										</div>
+										<div class="col-lg-12">
+											<div class="form-group">
+										<label for="doc_id"> Doctor id: </label>
+										<input id="doc_id" type="number"  class="form-control"  name="doc_id">
+									</div>
+										</div>
+									
+									
+									<div id="copyform" class="container">
+									<div id="fillform" class="container">
+									</div>
+									<br><br><br> 
+									
+									
+									<h5 class="text-md">Medication Order</h5>
+									<div class="divider my-4"></div>
+										<div class="col-lg-12">
+											<div class="form-group">
+										<label for="medication_unit"> Medication Unit </label>
+										<input id="medication_unit" type="text" class="form-control"  name="medication_unit">
+									</div>
+										</div>
+										<div class="col-lg-12">
+											<div class="form-group">
+										<label for="prescription_id"> Prescription Id: </label>
+										<input id="prescription_id" type="number" class="form-control"  name="prescription_id">
+									</div>
+										</div>
+										<div class="col-lg-12">
+											<div class="form-group">
+										<label for="medicine_code">Medicine Code: </label>
+										<input id="medicine_code" type="text" class="form-control" name="medicine_code">
+									</div>
+										</div>
+									
+										<br><br><br> 
+								
+									<h5 class="text-md">Authorisation Details</h5>
+									<div class="divider my-4"></div>
+									<div class="col-lg-12">
+										<div class="form-group">
+										<label for="number_of_repeats_allowed"> No of Repeats: </label>
+										<input id="number_of_repeats_allowed" type="number" class="form-control" name="repeats_allowed">
+									</div>
+									</div>
+									<div class="col-lg-12">
+										<div class="form-group">
+										<label for="validity_period"> Validity Period: </label>
+										<input id="validity_period" type="date" class="form-control" name="validity_period">
+									</div>
+									</div>
+									<div class="col-lg-12">
+										<div class="form-group">
+										<label for="medication_id">Medication Id: </label>
+										<input id="medication_id" type="number" class="form-control" name="medication_id">
+									</div>
+									</div>
+								
+									
+									<br><br><br> 
+								
+								
+									<h5 class="text-md">Medication Timing</h5>
+									<div class="divider my-4"></div>
+									<div class="col-lg-12">
+										<div class="form-group">
+										<label for="morning"> Morning: </label>
+										<input id="morning" type="date" class="form-control" name="morning">
+									</div>
+									</div>
+									<div class="col-lg-12">
+										<div class="form-group">
+										<label for="afternoon"> Afternoon: </label>
+										<input id="afternoon" type="date" class="form-control" name="afternoon">
+									</div>
+									</div>
+									<div class="col-lg-12">
+										<div class="form-group">
+										<label for="evening">Evening: </label>
+										<input id="evening" type="date" class="form-control" name="evening">
+									</div>
+									</div>
+									<div class="col-lg-12">
+										<div class="form-group">
+										<label for="night">Night: </label>
+										<input id="night" type="date" class="form-control" name="night">
+									</div>
+									</div>
+									<div class="col-lg-12">
+										<div class="form-group">
+										<label for="medication_id">Medication Id: </label>
+										<input id="medication_id" type="number" class="form-control" name="medication_id">
+									</div>
+									</div>
+								
+								
+									<br><br><br> 
+								
+								
+									<h5 class="text-md">Repetation</h5>
+									<div class="divider my-4"></div>
+									<div class="col-lg-12">
+										<div class="form-group">
+										<label for="start_date"> Start Date: </label>
+										<input id="start_date" type="date" class="form-control" name="start_date">
+									</div>
+									</div>
+									<div class="col-lg-12">
+										<div class="form-group">
+										<label for="end_date"> End Date: </label>
+										<input id="end_date" type="date" class="form-control" name="end_date">
+									</div>
+									</div>
+									<div class="col-lg-12">
+										<div class="form-group">
+										<label for="repetation_interval">Repetation Interval: </label>
+										<input id="repetation_interval" type="text" class="form-control" name="repetation_interval">
+									</div>
+									</div>
+									<div class="col-lg-12">
+										<div class="form-group">
+									<label for="medication_id">Medication Id: </label>
+									<input id="medication_id" type="number" class="form-control" name="medication_id">
+									</div>
+									</div>
+								
+									<br><br><br> 
+								
+								
+									<h5 class="text-md">Medication Safety</h5>
+									<div class="divider my-4"></div>
+									<div id="remform" class="row">
+										<div class="col-lg-12">
+											<div class="form-group">
+										 <label for="max_dose_per_period"> Max Dose Per Period: </label>
+										  <input id="max_dose_per_period" type="number" class="form-control" name="max_dose_per_period">
+											</div>
+										</div>
+										<div class="col-lg-12">
+											<div class="form-group">
+										<label for="override_reason"> Override Reason: </label>
+										<input id="override_reason" type="text" class="form-control" name="override_reason">
+									</div>
+										</div>
+									<div class="col-lg-12">
+										<div class="form-group">
+										<label for="medication_id">Medication Id: </label>
+										<input id="medication_id" type="number" class="form-control" name="medication_id">
+									</div>
+									</div>
+								</div>
+							</div>
+								
+								
+									<br><br><br> 
+
+									<div class="text-center">
+									<button  class="btn btn-main btn-round-full" id="button" type="button" onClick=addForm()>Add Data</button>
+									</div>
+									<br><br><br><br><br><br><br><br><br> 
+									<div class="text-center">
+									<input  class="btn btn-main btn-round-full" id="add" type="submit">
+									</div>
+								
+								</form>
+							</ul>
+						</div>
+
+					<!-- <div class="col-lg-2"> -->
+
+					</div>
+
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+		
+
+		<!-- 
+		Essential Scripts
+		=====================================-->
+
+
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
+	</body>
+</html>
