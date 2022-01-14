@@ -62,29 +62,48 @@ def doc_register(request):
         print(departments)
         return render(request, 'doc_register.html', {'departments' : departments})
 
-def doc_prescription(request):
-    prescription = DoctorPrescription.objects.filter(prescription_id=1)
-    print(prescription)
-    print(prescription.prescription_id)
-    print('------------')
+
+def all_doctors(request):
+    doctors = DoctorProfile.objects.all()
+    return render(request,'alldoctors.html',{'doctors':doctors})
+
+def view_prescription(request):
+    prescription = DoctorPrescription.objects.all()[0]   #filter(prescription_id = 4)[0]
     medication_orders = Medication_order.objects.filter(prescription_id=prescription.prescription_id)
-    print(prescription)
-    sendData = {}
+    print(medication_orders)
+    print('-----------------')
+    prescription_data = {
+        'prescription_details': prescription,
+        'medication_data':[],
+        }
     for med_order in medication_orders:
-        print(med_order)
         authorization = Authorisation_details.objects.filter(medication_id=med_order.medication_id)
         med_timing = Medication_timing.objects.filter(medication_id=med_order.medication_id)
         repetation = Repetation.objects.filter(medication_id=med_order.medication_id)
         med_safety = Medication_safety.objects.filter(medication_id=med_order.medication_id)
-        print(authorization)
-        print(med_timing)
-        print(repetation)
-        print(med_safety)
-        print('-----------------------------------')
-        sendData = {'auth':authorization, 'med_timing':med_timing, 'repetation':repetation, 'med_safety':med_safety}
-        # return render(request, "doc_prescription.html", sendData)
+        medication_data = {
+            'medication_order': med_order,
+            'authorization': authorization,
+            'med_timing': med_timing,
+            'repetation': repetation,
+            'med_safety': med_safety
+            }
+        prescription_data['medication_data'] = medication_data
 
-    # docPresc = DoctorPrescription.objects.all()
-    # docMedication = Medication_order.objects.all()
-    context = {'presc' : prescription}
-    return render(request, "doc_prescription.html", context)
+    '''
+    # This is the JSON response that the front end will recieve
+    #     
+    {
+    'prescription_details': <DoctorPrescription: aman is assigned to Dr. Vinay Kumar>, 
+    'medication_data': 
+    {
+        'medication_order': <Medication_order: dolo prescribed by Dr. Vinay Kumar>, 
+        'authorization': <QuerySet [<Authorisation_details: dolo is allowed 6 times>]>, 
+        'med_timing': <QuerySet [<Medication_timing: Timing of dolo>]>, 
+        'repetation': <QuerySet [<Repetation: dolo medicine is continued for  5 days>]>, 
+        'med_safety': <QuerySet [<Medication_safety: Safety with dolo>]>
+    }
+}
+    '''
+    print(prescription_data)
+    return render(request, "doc_prescription.html", prescription_data)

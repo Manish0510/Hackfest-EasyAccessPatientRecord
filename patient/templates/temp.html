@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block head %}
+<title>Register-Patient</title>
+{% endblock %}
+
+{% block body %}
+<h5>patient record</h5>
+{{ patients.patient_id }}<br>
+{{ patients.patient_name }}<br>
+{{ patients.gender }}<br>
+{{ patients.phone_num }}<br>
+{{ patients.patient_relative_name }}<br>
+{{ patients.patient_relative_contact }}<br>
+{{ patients.resd_address }}<br>
+{{ patients.prior_ailments }}<br>
+{{ patients.dob }}<br>
+{{ patients.email }}<br>
+<p>--------------------------</p>
+<h5>medical info</h5>
+{% for data in medical_info %}
+    {{ data.medical_info_data.height }}<br>
+    {{ data.medical_info_data.weight }}<br>
+    {{ data.medical_info_data.bloodType }}<br>
+    {{ data.medical_info_data.allergy }}<br>
+    {{ data.medical_info_data.alzheimer }}<br>
+    {{ data.medical_info_data.asthma }}<br>
+    {{ data.medical_info_data.diabetes }}<br>
+    {{ data.medical_info_data.stroke }}<br>
+    {{ data.medical_info_data.medical_history }}<br>
+    {% endfor %}
+<!-- {{ medical_info.medical_info_data.height }}
+{{ medical_info.medical_info_data.height }} -->
+{% endblock %}

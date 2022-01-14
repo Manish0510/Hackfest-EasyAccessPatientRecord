@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="description" content="Orbitor,business,company,agency,modern,bootstrap4,tech,software">
+	<meta name="author" content="themefisher.com">
+
+	<title>Novena- Health & Care Medical template</title>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
+
+	<!-- bootstrap.min css -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
+		integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+
+	<!-- Main Stylesheet -->
+	<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body id="top">
+
+
+
+	<section class="page-title bg-2">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="block text-center">
+						<h1 class="text-capitalize mb-5 text-lg">Patient Information</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<section class="section department-single">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="department-content sidebars-widget schedules-widget mt-5">
+						<h5 class="text-md">Patient Details</h5>
+						<div class="divider my-4"></div>
+						<ul class="list-unstyled">
+							<li class="d-flex justify-content-between align-items-center">
+								<a>Unique ID&nbsp;:&nbsp;&nbsp;</a>
+								<span style="float:right;">{{patients.patient_id}}</span>
+							</li>
+							<li class="d-flex justify-content-between align-items-center">
+								<a>Name&nbsp;:&nbsp;&nbsp;</a>
+								<span>{{patients.patient_name}}</span>
+							</li>
+							<li class="d-flex justify-content-between align-items-center">
+								<a>Gender&nbsp;:&nbsp;&nbsp;</a>
+								<span>{{patients.gender}}</span>
+							</li>
+							<li class="d-flex justify-content-between align-items-center">
+								<a>Date of Birth&nbsp;:&nbsp;&nbsp;</a>
+								<span>{{patients.dob}}</span>
+							</li>
+							<li class="d-flex justify-content-between align-items-center">
+								<a>Contact&nbsp;:&nbsp;&nbsp;</a>
+								<span>{{patients.phone_num}}</span>
+							</li>
+							<li class="d-flex justify-content-between align-items-center">
+								<a>Email&nbsp;:&nbsp;&nbsp;</a>
+								<span>{{patients.email}}</span>
+							</li>
+							<li class="d-flex justify-content-between align-items-center">
+								<a>Relative Name&nbsp;:&nbsp;&nbsp;</a>
+								<span>{{patients.patient_relative_name}}</span>
+							</li>
+							<li class="d-flex justify-content-between align-items-center">
+								<a>Relative Contact&nbsp;:&nbsp;&nbsp;</a>
+								<span>{{patients.patient_relative_contact}}</span>
+							</li>
+							<li class="d-flex justify-content-between align-items-center">
+								<a>Address&nbsp;:&nbsp;&nbsp;</a>
+								<span>{{patients.resd_address}}</span>
+							</li>
+						</ul>
+						<br>
+						{% for data in medical_info %}
+						<h5 class="text-md">Medical History</h5>
+						<div class="divider my-4"></div>
+						<p>{{ data.medical_info_data.medical_history }}</p>
+						{% endfor %}
+					</div>
+				</div>
+				<div class="col-lg-2">
+
+				</div>
+
+
+				<div class="col-lg-4">
+					<div class="sidebar-widget schedule-widget mt-5">
+						<h5 class="mb-4 text-md">Medical Info</h5>
+
+						{% for data in medical_info %}
+						<ul class="list-unstyled">
+							<li class="d-flex justify-content-between align-items-center">
+								<a>Height</a>
+								<span>{{ data.medical_info_data.height }}</span>
+							</li>
+							<li class="d-flex justify-content-between align-items-center">
+								<a>Weight</a>
+								<span> {{ data.medical_info_data.weight }}</span>
+							</li>
+							<li class="d-flex justify-content-between align-items-center">
+								<a>Blood Type</a>
+								<span>{{ data.medical_info_data.bloodType }}</span>
+							</li>
+							<li class="d-flex justify-content-between align-items-center">
+								<a>Allergy</a>
+								<span>{{ data.medical_info_data.allergy }}</span>
+							</li>
+							<li class="d-flex justify-content-between align-items-center">
+								<a>Alzheimer</a>
+								<span>{{ data.medical_info_data.alzheimer }}</span>
+							</li>
+							<li class="d-flex justify-content-between align-items-center">
+								<a>Asthama</a>
+								<span>{{ data.medical_info_data.asthma }}</span>
+							</li>
+							<li class="d-flex justify-content-between align-items-center">
+								<a>Diabetes</a>
+								<span>{{ data.medical_info_data.diabetes }}</span>
+							</li>
+							<li class="d-flex justify-content-between align-items-center">
+								<a>Stroke</a>
+								<span>{{ data.medical_info_data.stroke }}</span>
+							</li>
+						</ul>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- 
+		Essential Scripts
+		=====================================-->
+
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"
+		integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF"
+		crossorigin="anonymous"></script>
+
+</body>
+
+</html>

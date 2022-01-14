@@ -10,16 +10,18 @@
     <h2>Doctor Prescription</h2>
     <h3>++++++++++++++++++++++++++++++++++++++++++++</h3>
 
-    {% for presc in presc %}
-    <h2>Today - {{presc.date}}</h2>
-    <h2>Next Visit - {{presc.nextVisit}}</h2>
+    <h2>Today - {{prescription_details.prescription_id}}</h2>
+
+    <!-- <h2>Next Visit - {{presc.nextVisit}}</h2>
     <h2>Reason - {{presc.reason}}</h2>
-    <h2>Notes - {{presc.doctors_notes}}</h2>
-    {% endfor %}
+    <h2>Notes - {{presc.doctors_notes}}</h2> -->
     <h2>---------------------------------</h2>
     <h3>Medication Order</h3>
     <h2>---------------------------------</h2>
-    <h2>Medication Unit - {{meds.medication_unit}}</h2>
+    {% for medication_order in medication_data %}
+    
+    <h2>Medication Unit - {{medication_order}}</h2>
+    {% endfor %}
     <h2>Medicine name - </h2>
 
     <h2>---------------------------------</h2>
