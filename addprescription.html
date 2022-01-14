@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="eng">
+	<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+	<title>H-EAPR</title>
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" type="image/x-icon" href="/images/favicon.png" />
+
+	<!-- bootstrap.min css -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+	
+	<!-- Main Stylesheet -->
+	<link rel="stylesheet" href="css/style.css">
+
+	</head>
+
+	<body id="top">
+
+
+		<section class="page-title bg-3">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row">
+			<div class="col-md-12">
+				<div class="block text-center">
+				<h1 class="text-capitalize mb-5 text-lg">Add Prescription</h1>
+				<span class="text-white"></span>
+				</div>
+			</div>
+			</div>
+		</div>
+		</section>
+		<!-- contact form start -->
+
+
+
+		<section class="contact-form-wrap section">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 col-md-12 col-sm-12">
+						<form id="contact-form" class="contact__form " method="post" action="mail.php">
+						<!-- form message -->
+							<div class="row">
+								<div class="col-12">
+									<div class="alert alert-success contact__msg" style="display: none" role="alert">
+										Your message was sent successfully.
+									</div>
+								</div>
+							</div>
+
+							<div class="row">
+								<div class="col-lg-12">
+									<div class="section-title text-center">
+										<h3 class="mb-2">Doctor Prescription</h3>
+										<div class="divider mx-auto my-4"></div>
+									</div>
+								</div>
+
+								<div class="col-lg-6">
+									<div class="form-group">
+										<h5 class="mb-2">&nbsp;Date </h5>
+										<input id="date" type="date" name="date" class="form-control"> 
+									</div>
+								</div>
+
+								<div class="col-lg-6">
+									<div class="form-group">
+										<h5 class="mb-2">&nbsp; Next Visit </h5>
+										<input id="nextvisit" type="date" name="nextVisit" class="form-control">
+									</div>
+								</div>
+
+								<div class="col-lg-6">
+									<div class="form-group">
+										<h5 class="mb-2">&nbsp;Reason</h5>
+										<input id="reason" type="text" name="reason" class="form-control" placeholder="Enter the reason for visiting"> 
+									</div>
+								</div>
+
+								<div class="col-lg-6">
+									<div class="form-group">
+										<h5 class="mb-2">&nbsp;Doctor Notes </h5>
+										<input id="doc_notes" type="text" name="doc_notes" class="form-control" placeholder="Enter a note for future refrencing">
+									</div>
+								</div>
+
+								<div class="col-lg-6">
+									<div class="form-group">
+										<h5 class="mb-2">&nbsp;Patient Id </h5>
+										<select name="patient" id="patient" class="form-control">
+											{% for patient in patients %}
+											<option value="{{ patient.patient_id }}">{{ patient.patient_name }}</option>
+											{% endfor %}
+										</select>
+									</div>
+								</div>
+
+								<div class="col-lg-6">
+									<div class="form-group">
+										<h5 class="mb-2">&nbsp;Doctor Id </h5>
+										<select name="doctor" id="doctor" class="form-control">
+											{% for doctor in doctors %}
+											<option value="{{ doctor.doctor_id }}">{{ doctor.doctor_name }}</option>
+											{% endfor %}
+										</select>
+									</div>
+								</div>
+
+								<!-- Adding Medications -->
+								<div class="text-center my-4">
+									<input type="button" class="btn btn-main" value="Add Medicine" id='add_meds' onclick="addMeds()">
+								</div>
+
+								<!-- Medicine Details -->
+								<div id="formfieds" class="row col-lg-12">
+									
+									<!-- Medication Order -->
+									<div class="col-lg-12">
+										<div class="section-title text-center">
+											<div class="my-4"></div>
+											<h3 class="mb-2">Medication Order</h3>
+											<div class="divider mx-auto my-4"></div>
+										</div>
+									</div>
+
+									<div class="col-lg-12">
+										<div class="form-group">
+											<h5 class="mb-2">&nbsp;Medicine</h5>
+											<select name="doctor" id="doctor" class="form-control">
+												{% for medicine in medicines %}
+												<option value="{{ medicine.name }}">{{ medicine.name }}</option>
+												{% endfor %}
+											</select>
+										</div>
+									</div>
+
+
+
+									<!-- Medication Timing -->
+									<div class="col-lg-12">
+										<div class="section-title text-center">
+											<br>
+											<div class="my-4"></div>
+											<h3 class="mb-2">Medication Timing</h3>
+											<div class="divider mx-auto my-4"></div>
+										</div>
+									</div>
+
+									<div class="col-lg-3 text-center">
+										<div class="form-group">
+											<label class="mb-2" for="morning"> Morning:&nbsp;&nbsp;</label>
+											<input type="checkbox" name="morning" id="morning">
+										</div>
+									</div>
+
+									<div class="col-lg-3 text-center">
+										<div class="form-group">
+											<label for="afternoon"> Afternoon:&nbsp;&nbsp;</label>
+											<input type="checkbox" name="afternoon" id="afternoon">
+										</div>
+									</div>
+
+									<div class="col-lg-3 text-center">
+										<div class="form-group">
+											<label for="evening">Evening:&nbsp;&nbsp;</label>
+											<input type="checkbox" name="evening" id="evening">
+										</div>
+									</div>
+
+									<div class="col-lg-3 text-center">
+										<div class="form-group">
+											<label for="night">Night:&nbsp;&nbsp;</label>
+											<input type="checkbox" name="night" id="night">
+										</div>
+									</div>
+
+
+
+									<!-- Repitiions -->
+									<div class="col-lg-12">
+										<div class="section-title text-center">
+											<br>
+											<div class="my-4"></div>
+											<h3 class="mb-2">Repititions</h3>
+											<div class="divider mx-auto my-4"></div>
+										</div>
+									</div>
+
+									<div class="col-lg-6">
+										<div class="form-group">
+											<h5 class="mb-2">&nbsp;Start Date</h5>
+											<input id="start_date" type="date" name="start_date" class="form-control">
+										</div>
+									</div>
+
+									<div class="col-lg-6">
+										<div class="form-group">
+											<h5 class="mb-2">&nbsp;End Date</h5>
+											<input id="end_date" type="date" name="end_date" class="form-control">
+										</div>
+									</div>
+
+									<div class="col-lg-12">
+										<div class="form-group">
+											<h5 class="mb-2">&nbsp;Repitition Interval</h5>
+											<input id="repetation_interval" type="text" name="repetation_interval" class="form-control" placeholder="Enter an interval for repeating the medicines">
+										</div>
+									</div>
+
+
+
+
+									<!-- Authorisation Details -->
+									<div class="col-lg-12">
+										<div class="section-title text-center">
+											<br>
+											<div class="my-4"></div>
+											<h3 class="mb-2">Authorisation Details</h3>
+											<div class="divider mx-auto my-4"></div>
+										</div>
+									</div>
+
+									<div class="col-lg-6">
+										<div class="form-group">
+											<h5 class="mb-2">&nbsp;Number of Repeats</h5>
+											<input id="number_of_repeats_allowed" type="number" name="repeats_allowed" class="form-control" placeholder="Enter the number of repeats">
+										</div>
+									</div>
+
+									<div class="col-lg-6">
+										<div class="form-group">
+											<h5 class="mb-2">&nbsp;Validity Period</h5>
+											<input id="validity_period" type="date" name="validity_period" class="form-control">
+										</div>
+									</div>
+
+
+
+
+									<!-- Medication Safety -->
+									<div class="col-lg-12">
+										<div class="section-title text-center">
+											<br>
+											<div class="my-4"></div>
+											<h3 class="mb-2">Medication Safety</h3>
+											<div class="divider mx-auto my-4"></div>
+										</div>
+									</div>
+
+									<div class="col-lg-6">
+										<div class="form-group">
+											<h5 class="mb-2">&nbsp;Max Dose Per Period</h5>
+											<input id="max_dose_per_period" type="number" name="max_dose_per_period" class="form-control" placeholder="Enter the maximum dosage">
+										</div>
+									</div>
+
+									<div class="col-lg-6">
+										<div class="form-group">
+											<h5 class="mb-2">&nbsp;Override Reason</h5>
+											<input id="override_reason" type="text" name="override_reason" class="form-control" placeholder="Enter the reason for overriding">
+										</div>
+									</div>
+
+									
+									<div class="col-lg-10 divider mx-auto my-4"></div>
+
+
+								</div>
+								<!-- Medicine Details Ends -->
+							</div>
+
+							<div class="text-center">
+								<br>
+								<br>
+								<input class="btn btn-main btn-round-full" name="submit" type="submit" value="Submit"></input>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</section>
+
+
+		
+
+		<!-- 
+		Essential Scripts
+		=====================================-->
+
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+
+
+	</body>
+  </html>

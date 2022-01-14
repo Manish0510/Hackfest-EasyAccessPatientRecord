@@ -56,6 +56,13 @@ p {
   line-height: 30px;
 }
 
+label{
+  font-family: "Exo", sans-serif;
+  font-weight: 700;
+  color: #222;
+  font-size: 1.25rem;
+}
+
 .navbar-toggle .icon-bar {
   background: #223a66;
 }
@@ -466,6 +473,13 @@ a:focus {
   background-size: cover;
   position: relative;
 }
+
+.bg-3{
+  background: url("../images/bg/24.png") no-repeat 50% 50%;
+  background-size: cover;
+  position: relative;
+}
+
 
 .banner {
   position: relative;
