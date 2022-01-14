@@ -1,8 +1,9 @@
 from django.shortcuts import redirect, render
 from .models import DoctorProfile
 from django.http import HttpResponse
-from .models import Department
-from patient.models import PatientProfile
+from .models import Department,DoctorProfile
+from patient.models import MedicalInfo,PatientProfile
+# from patient.models import PatientProfile
 
 # Create your views here.
 def login(request):
@@ -62,3 +63,9 @@ def doc_register(request):
         departments = Department.objects.all()
         print(departments)
         return render(request, 'doc_register.html', {'departments' : departments})
+
+
+def doc_homepage(request):
+    q = request.GET.get('q') 
+    infos = MedicalInfo.objects.filter(patientid = q)
+    return render(request, 'doc_home.html', {'infos': infos})

@@ -1,9 +1,38 @@
-{% extends "base.html" %}
+{% extends "base.html" %} 
 
 {% block head %}
 <title>Homepage-Doctor</title>
-{% endblock %}
+{% endblock %} 
 
 {% block body %}
+<style>
+  .med-info {
+    text-align: center;
+  }
+</style>
+
 <h1>You are currently in doctor's homepage</h1>
+
+<div>
+  <form action="{% url 'doc_homepage' %}" method="GET">
+    <input type="number" name="q" placeholder="Search Patient Id....." />
+  </form>
+</div>
+
+<div class="med-info">
+  {% for info in infos %}
+
+  <h5>Patient Name: {{ info.patientid.patientname }}</h5>
+  <h5>Patient Id: {{info.patientid}}</h5>
+  <h5>Medical History: {{ info.medical_history }}</h5>
+  <h5>Height: {{ info.height }}</h5>
+  <h5>Weight: {{ info.weight }}</h5>
+  <h5>Allergy: {{ info.allergy }}</h5>
+  <h5>Asthma: {{ info.asthma }}</h5>
+  <h5>Diabetes: {{ info.diabetes }}</h5>
+  <h5>Stroke: {{ info.stroke }}</h5>
+
+  {% endfor %}
+</div>
+
 {% endblock %}

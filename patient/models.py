@@ -2,9 +2,10 @@ from django.db import models
 
 # Create your models here.
 
+
 class PatientProfile(models.Model):
-    patient_id = models.AutoField(primary_key=True)
-    patient_name = models.CharField(max_length=50)
+    patientid = models.AutoField(primary_key=True)
+    patientname = models.CharField(max_length=50)
     gender = models.CharField(max_length=10)
     phone_num = models.CharField(max_length=15)
     patient_relative_name = models.CharField(max_length=50, null=True)
@@ -12,14 +13,14 @@ class PatientProfile(models.Model):
     resd_address = models.TextField()
     prior_ailments = models.TextField()
     dob = models.DateField(null=True)
-    email = models.EmailField(null = False)
+    email = models.EmailField(null=False)
     password = models.TextField(max_length=50)
 
-           # critical/serious
+    # critical/serious
     # ---------------Foreign Keys-------------------
 
     def __str__(self):
-        return str(self.patient_id)
+        return str(self.patientid)
 
     class Meta:
         db_table = 'PatientProfile'
@@ -30,7 +31,9 @@ class PatientProfile(models.Model):
         except:
             return False
 
-#Medical Info about the patient to be stored in this table
+# Medical Info about the patient to be stored in this table
+
+
 class MedicalInfo(models.Model):
     height = models.CharField(max_length=5)
     weight = models.DecimalField(max_digits=5, decimal_places=2)
@@ -42,10 +45,10 @@ class MedicalInfo(models.Model):
     stroke = models.BooleanField()
     medical_history = models.TextField()
     # ---------------Foreign Keys-------------------
-    patient_id = models.ForeignKey(PatientProfile, on_delete=models.CASCADE)
+    patientid = models.ForeignKey(PatientProfile, on_delete=models.CASCADE)
 
     def __str__(self):
-        return str(self.patient_id)
+        return str(self.patientid)
 
     class Meta:
         db_table = 'MedicalInfo'

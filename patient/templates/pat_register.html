@@ -5,12 +5,18 @@
 {% endblock %}
 
 {% block body %}
+<style>
+  .reg-form{
+    text-align: center;
+  }
+</style>
 
-
+<div class="reg-form">
 <form action="" method="post">
   {% csrf_token %} 
   {{ form.as_p }}
   <input type="submit" value="Register" />
 </form>
+</div>
 
 {% endblock %}
