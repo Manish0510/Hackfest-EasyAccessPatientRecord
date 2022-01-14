@@ -1,3 +1,4 @@
+import re
 from django.shortcuts import redirect, render
 from .models import DoctorProfile
 from django.http import HttpResponse
@@ -17,14 +18,14 @@ def login(request):
 
         error_message = None 
 
-        if doctor and (password== doctor.password):
+        if doctor and (password==doctor.password):
             request.session['doctor_id'] = doctor.doctor_id
-            return render(request, 'doc_home.html')
+            return render(request, 'doc_home.html', {'doctor': doctor})
 
         else:
             patient = PatientProfile.get_patient_by_email(email)
 
-            if patient and (password == patient.password):
+            if patient and (password==patient.password):
                 request.session['patient_id'] = patient.patient_id
                 return redirect('pat_homepage')
             else:
@@ -32,12 +33,23 @@ def login(request):
 
         return render(request, 'login.html', {'error_message': error_message})
 
+
+def logout(request):
+    request.session.clear()
+    return redirect('homepage')
+
+
 # Website Hompage
 def homepage(request):
-    return render(request=request, template_name='homepage.html')
+    return render(request, 'homepage.html')
+
     
 def doc_homepage(request):
-    return render(request=request, template_name='doc_home.html')
+    doctor_id = request.session.get('doctor_id')
+    doctor = DoctorProfile.get_doctor_by_id(doctor_id)
+    return render(request, 'doc_home.html', {'doctor': doctor})
+    
+
 
 def doc_register(request):
     if request.method == 'POST':

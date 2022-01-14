@@ -29,6 +29,12 @@ class PatientProfile(models.Model):
             return PatientProfile.objects.get(email=email)
         except:
             return False
+    
+    def get_patient_by_id(id):
+        try:
+            return PatientProfile.objects.get(patient_id=id)
+        except:
+            return False
 
 #Medical Info about the patient to be stored in this table
 class MedicalInfo(models.Model):

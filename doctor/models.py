@@ -30,6 +30,12 @@ class DoctorProfile(models.Model):
         except:
             return False
 
+    def get_doctor_by_id(id):
+        try:
+            return DoctorProfile.objects.get(doctor_id=id)
+        except:
+            return False
+
 
 # Info of all the medicines stored here.
 class Medicines(models.Model):
