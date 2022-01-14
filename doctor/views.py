@@ -70,7 +70,7 @@ def all_doctors(request):
 
 def add_prescription(request):
 
-    if request.method == 'GET':
+    if request.method == 'POST':
 
         # Adding prescription
         patient = PatientProfile.objects.filter(patient_id = 1)[0]
@@ -140,7 +140,10 @@ def add_prescription(request):
         return HttpResponse('Data Posted Successfully!') 
 
     else:
-        return HttpResponse('This is a get Request!')
+        doctors = DoctorProfile.objects.all()
+        patients = PatientProfile.objects.all()
+        medicines = Medicines.objects.all()
+        return render(request, 'doc_add_prescription.html', {'doctors': doctors, 'patients': patients, 'medicines': medicines})
 
 
 def view_prescription(request):

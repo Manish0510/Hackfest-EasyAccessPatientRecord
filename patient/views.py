@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from patient.models import *
 from .forms import RegForm, MedicalInfoForm
 from django.shortcuts import render,redirect
+from patient.models import *
 
 # Create your views here.
 def pat_homepage(request):
@@ -29,50 +30,8 @@ def pat_medicalForm(request):
     context = {'form': form}
     return render(request, 'pat_medicalForm.html', context)
 
-def allpatients(request):
-    patients = PatientProfile.objects.all()[0]
-    medical_info = MedicalInfo.objects.filter(patient_id=patients.patient_id)
-    patient_data = {
-        'patients': patients,
-        'medical_info':[],
-    }
-    for data in medical_info:
-        print(data.height)
-        print(data.weight)
-        print(data.bloodType)
-        print(data.allergy)
-        print(data.medical_history)
-        
-        medical_info = MedicalInfo.objects.filter(patient_id = data.patient_id)[0]
-        print(medical_info)
-        medical_info = {
-            'medical_info_data':data
-        }
-        patient_data['medical_info'].append(medical_info)
-    print('---------------------')
-    print(patients)
-    print('---------------------------')
-    print(medical_info)
-    print('---------------------------')
-    print(patient_data)
-    print('---------------------------')
-    return render(request, 'allpatients.html', patient_data)
-    # return HttpResponse('Success')
+def pat_info(request, id):
+    patient_info = PatientProfile.objects.filter(patient_id = id)[0]
+    pat_med_info = MedicalInfo.objects.filter(patient_id = id)[0]
 
-
-
-'''
-<QuerySet [<MedicalInfo: aman>]>
-aman
----------------------------
-<QuerySet [<MedicalInfo: aman>]>
----------------------------
-{
-    'patients': <PatientProfile: aman>, 
-    'medical_info': <QuerySet [<MedicalInfo: aman>]>
-}
----------------------------
-
-
-
-'''
+    return render(request, 'pat_info.html', {'patient_info': patient_info, 'pat_med_info': pat_med_info})
